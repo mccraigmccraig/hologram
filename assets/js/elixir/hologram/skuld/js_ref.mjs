@@ -33,10 +33,7 @@ const Elixir_Hologram_Skuld_JSRef = {
 
       const resolved = Type.map(entries);
 
-      return Interpreter.callAnonymousFunction(
-        continuation,
-        Type.list([resolved]),
-      );
+      return Interpreter.callAnonymousFunction(continuation, [resolved]);
     });
   },
 };
