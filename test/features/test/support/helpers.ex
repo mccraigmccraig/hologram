@@ -312,7 +312,7 @@ defmodule HologramFeatureTests.Helpers do
          {:ok, elements} <- filter_by_selected(query, elements),
          {:ok, elements} <- validate_count(query, elements),
          {:ok, elements} <- apply_at(query, elements) do
-      {:ok, %Query{query | result: elements}}
+      {:ok, %{query | result: elements}}
     end
   rescue
     StaleReferenceError ->
