@@ -63,6 +63,7 @@ defmodule Hologram.MixProject do
       {:plug_crypto, "~> 2.0"},
       {:recode, "~> 0.7", only: :dev, runtime: false},
       {:sobelow, "~> 0.12", only: [:dev, :test], runtime: false},
+      {:skuld, "~> 0.30", path: ".."},
       {:uuid, "~> 1.0"},
       {:websock_adapter, "~> 0.5"}
     ]
