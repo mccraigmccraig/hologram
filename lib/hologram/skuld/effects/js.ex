@@ -27,7 +27,6 @@ defmodule Hologram.Skuld.Effects.JS do
   """
 
   alias Skuld.Comp
-  alias Skuld.Comp.Env
   alias Skuld.Comp.ForeignSuspend
   alias Skuld.Effects.FreshInt
   alias Hologram.Skuld.JSRef
@@ -107,6 +106,6 @@ defmodule Hologram.Skuld.Effects.JS do
   @doc false
   @spec __native_call__(term(), list()) :: term()
   def __native_call__(_function, _args) do
-    raise "Hologram.Skuld.Effects.JS.__native_call__/2 is only available in the Hologram browser runtime"
+    :erlang.nif_error(:not_available_on_server)
   end
 end

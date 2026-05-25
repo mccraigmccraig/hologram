@@ -2,9 +2,6 @@ defmodule Hologram.Test.Fixtures.Compiler.Skuld.ForeignSuspendPage do
   use Hologram.Page
 
   import Skuld.Comp.CompBlock
-  alias Skuld.Comp
-  alias Skuld.Coroutine.Completed
-  alias Skuld.Coroutine.ForeignSuspensions
   alias Skuld.Effects.FiberPool
   alias Skuld.ForeignResolver.Runner, as: ForeignRunner
   alias Hologram.Skuld.Effects.JS

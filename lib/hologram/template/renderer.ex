@@ -65,13 +65,15 @@ defmodule Hologram.Template.Renderer do
   end
 
   def render_dom({:element, "slot", _attrs_dom, []}, env, server_struct) do
-    render_dom(env.slots[:default], %Env{env | slots: []}, server_struct)
+    %Env{} = env
+    render_dom(env.slots[:default], %{env | slots: []}, server_struct)
   end
 
   def render_dom({:element, tag_name, attrs_dom, children_dom}, env, server_struct) do
     attrs_html = render_attributes(attrs_dom)
 
-    children_env = %Env{env | node_type: :element, tag_name: tag_name}
+    %Env{} = env
+    children_env = %{env | node_type: :element, tag_name: tag_name}
 
     {children_html, component_registry, mutated_server_struct} =
       render_dom(children_dom, children_env, server_struct)
@@ -91,7 +93,8 @@ defmodule Hologram.Template.Renderer do
   end
 
   def render_dom({:public_comment, children_dom}, env, server_struct) do
-    children_env = %Env{env | node_type: :public_comment}
+    %Env{} = env
+    children_env = %{env | node_type: :public_comment}
 
     {children_html, component_registry, mutated_server_struct} =
       render_dom(children_dom, children_env, server_struct)
