@@ -304,7 +304,7 @@ defmodule HologramFeatureTests.Helpers do
   end
 
   defp do_execute_query_once(%{driver: driver} = parent, query) do
-    with {:ok, query} <- Query.validate(query),
+    with {:ok, %Query{} = query} <- Query.validate(query),
          compiled_query <- Query.compile(query),
          {:ok, elements} <- driver.find_elements(parent, compiled_query),
          {:ok, elements} <- filter_by_visibility(query, elements),
@@ -312,7 +312,7 @@ defmodule HologramFeatureTests.Helpers do
          {:ok, elements} <- filter_by_selected(query, elements),
          {:ok, elements} <- validate_count(query, elements),
          {:ok, elements} <- apply_at(query, elements) do
-      {:ok, %Query{query | result: elements}}
+      {:ok, %{query | result: elements}}
     end
   rescue
     StaleReferenceError ->

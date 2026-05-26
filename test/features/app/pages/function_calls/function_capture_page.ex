@@ -147,17 +147,17 @@ defmodule HologramFeatureTests.FunctionCalls.FunctionCapturePage do
 
   def action(:arity_invalid_called_with_no_args, _params, _component) do
     fun = &{&1, &2}
-    fun.()
+    apply(fun, [])
   end
 
   def action(:arity_invalid_called_with_single_arg, _params, _component) do
     fun = &{&1, &2}
-    fun.(:a)
+    apply(fun, [:a])
   end
 
   def action(:arity_invalid_called_with_multple_args, _params, _component) do
     fun = & &1
-    fun.(:a, :b)
+    apply(fun, [:a, :b])
   end
 
   def action(:error_in_body, _params, _component) do

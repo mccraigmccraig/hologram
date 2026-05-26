@@ -122,17 +122,17 @@ defmodule HologramFeatureTests.FunctionCalls.AnonymousFunctionPage do
 
   def action(:arity_invalid_called_with_no_args, _params, _component) do
     fun = fn x, y -> {x, y} end
-    fun.()
+    apply(fun, [])
   end
 
   def action(:arity_invalid_called_with_single_arg, _params, _component) do
     fun = fn x, y -> {x, y} end
-    fun.(:a)
+    apply(fun, [:a])
   end
 
   def action(:arity_invalid_called_with_multple_args, _params, _component) do
     fun = fn x -> x end
-    fun.(:a, :b)
+    apply(fun, [:a, :b])
   end
 
   def action(:no_matching_clause, _params, _component) do
