@@ -40,6 +40,9 @@ import ManuallyPortedElixirCldrValidityU from "./elixir/cldr/validity/u.mjs";
 import ManuallyPortedElixirCode from "./elixir/code.mjs";
 import ManuallyPortedElixirHologramJS from "./elixir/hologram/js.mjs";
 import ManuallyPortedElixirHologramRouterHelpers from "./elixir/hologram/router/helpers.mjs";
+import ManuallyPortedElixirHologramSkuldJSRef from "./elixir/hologram/skuld/js_ref.mjs";
+import ManuallyPortedElixirHologramSkuldEffectsJS from "./elixir/hologram/skuld/effects_js.mjs";
+import ManuallyPortedElixirHologramSkuldRunner from "./elixir/hologram/skuld/runner.mjs";
 import ManuallyPortedElixirIO from "./elixir/io.mjs";
 import ManuallyPortedElixirKernel from "./elixir/kernel.mjs";
 import ManuallyPortedElixirString from "./elixir/string.mjs";
@@ -467,6 +470,27 @@ export default class Hologram {
       "asset_path/1",
       "public",
       ManuallyPortedElixirHologramRouterHelpers["asset_path/1"],
+    );
+
+    Interpreter.defineManuallyPortedFunction(
+      "Hologram.Skuld.Effects.JS",
+      "__native_call__/2",
+      "public",
+      ManuallyPortedElixirHologramSkuldEffectsJS["__native_call__/2"],
+    );
+
+    Interpreter.defineManuallyPortedFunction(
+      "Hologram.Skuld.JSRef",
+      "__resolve__/2",
+      "public",
+      ManuallyPortedElixirHologramSkuldJSRef["__resolve__/2"],
+    );
+
+    Interpreter.defineManuallyPortedFunction(
+      "Hologram.Skuld.Runner",
+      "__wrap__/1",
+      "public",
+      ManuallyPortedElixirHologramSkuldRunner["__wrap__/1"],
     );
 
     Interpreter.defineManuallyPortedFunction(
